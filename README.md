@@ -1,74 +1,108 @@
-# SANRAS — Sistem Antrean SAMSAT Riau
+# SANRAS — E-Riau SAMSAT Digital Queue
 
-SANRAS adalah aplikasi antrean digital berbasis web untuk membantu masyarakat mengambil nomor antrean layanan SAMSAT dan membantu administrator mengelola antrean, memanggil pemohon, melihat laporan, serta meninjau umpan balik.
+SANRAS (E-Riau SAMSAT) adalah aplikasi web antrean digital yang dikembangkan sebagai proyek akademik kelompok untuk studi kasus layanan SAMSAT Pekanbaru.
 
-## Fitur utama
+Aplikasi ini membantu masyarakat mengambil dan mengelola nomor antrean layanan, memantau status antrean, serta mencetak tiket. Administrator dapat memantau antrean per layanan, melakukan pemanggilan, mengelola laporan, dan meninjau umpan balik pengguna.
 
-### Masyarakat
+> **Project context:** Academic group project — Politeknik Caltex Riau, Tahun Akademik 2023/2024.  
+> **Notice:** This is an academic project/prototype, not an official SAMSAT government platform and not an online vehicle-tax payment gateway.
+
+## Project Overview
+
+Pengembangan proyek berangkat dari kebutuhan untuk menyediakan alur antrean digital dan informasi layanan yang lebih mudah diakses. Sistem dirancang dengan area pengunjung, masyarakat terdaftar, dan administrator.
+
+### Key Features
+
+#### Masyarakat
 - Registrasi dan login akun.
 - Mengambil nomor antrean untuk layanan BPKB, STNK, pajak kendaraan, dan uji kendaraan.
-- Melihat daftar antrean milik sendiri dan status pemanggilan.
-- Memperbarui data pemohon pada antrean yang masih menunggu; perubahan jenis layanan menerbitkan nomor baru pada layanan tujuan.
+- Melihat antrean milik sendiri dan status pemanggilan.
+- Memperbarui data antrean yang masih menunggu.
 - Membatalkan antrean sendiri yang masih menunggu.
-- Melihat daftar antrean hari ini tanpa mengekspos data pribadi pemohon lain.
-- Mencetak tiket antrean PDF.
+- Melihat daftar antrean aktif tanpa membuka data pribadi pemohon lain.
+- Mencetak tiket antrean dalam format PDF.
 - Mengirim umpan balik setelah login.
 
-### Administrator
-- Ringkasan antrean hari ini, minggu ini, bulan ini, dan total data.
-- Memantau antrean aktif per jenis layanan.
+#### Administrator
+- Melihat ringkasan antrean.
+- Memantau antrean aktif berdasarkan jenis layanan.
 - Memanggil dan menandai antrean selesai.
-- Menyaring riwayat antrean berdasarkan periode, layanan, atau kata kunci.
+- Menyaring laporan antrean berdasarkan periode dan layanan.
 - Mengekspor laporan antrean ke PDF.
 - Melihat detail dan menghapus umpan balik.
 
-## Teknologi
+#### Informasi Publik
+- Menampilkan informasi layanan dan persyaratan.
+- Menyediakan panduan penggunaan sistem.
 
-| Area | Teknologi |
+## My Contribution
+
+Proyek ini dikembangkan secara berkelompok. Kontribusi saya dalam proyek berdasarkan pembagian tugas pada laporan akhir meliputi:
+
+- **Frontend — Admin:** alert/konfirmasi penghapusan umpan balik.
+- **Frontend — User:** alert/notifikasi setelah pengiriman umpan balik.
+- **Backend — Admin:** bagian antrean masuk pada dashboard administrator.
+- **Backend — Admin:** proses penghapusan laporan antrean.
+- **Backend — User:** kontribusi pada alur login pengguna untuk fitur umpan balik.
+- **Documentation:** prototype antarmuka.
+
+Kontribusi anggota tim lainnya merupakan bagian dari pengembangan kelompok dan tidak diklaim sebagai pekerjaan individu saya.
+
+## Technology Stack
+
+| Area | Technology |
 |---|---|
-| Backend | PHP, Laravel 9 |
-| UI server-rendered | Blade |
-| Interaksi dinamis | Livewire 2 |
-| CSS framework | Bootstrap 5 |
-| Asset pipeline | Vite 4 |
-| JavaScript | ES Modules, Bootstrap JS |
-| Database | MySQL (default Laravel) |
-| PDF | barryvdh/laravel-dompdf |
-| Testing | PHPUnit |
+| Backend | PHP |
+| Framework | Laravel 9 |
+| Template | Blade |
+| Reactive UI | Livewire 2 |
+| CSS Framework | Bootstrap 5 |
+| Frontend Build | Vite 4 |
+| Database | MySQL |
+| PDF Generation | barryvdh/laravel-dompdf |
+| Testing Framework | PHPUnit |
 
-> **Catatan lifecycle:** project masih menggunakan Laravel 9 dan Livewire 2 yang sudah melewati masa dukungan keamanan upstream. Upgrade framework dan Livewire ke versi yang masih didukung tetap direkomendasikan sebagai pekerjaan tersendiri. Upgrade major tidak dilakukan dalam paket ini karena perlu pengujian kompatibilitas dependency dan integrasi secara penuh.
+### Locked Dependency Versions
 
-## Persyaratan sistem
+Versi pada lockfile paket yang diperiksa:
+- Laravel Framework: `v9.48.0`
+- Livewire: `v2.11.1`
+- Bootstrap: `v5.2.3`
+- Vite: `v4.0.4`
+- DomPDF: `v2.0.1`
 
-- PHP 8.1 atau 8.2 direkomendasikan untuk kompatibilitas project Laravel 9 ini (composer requirement saat ini: `^8.0.2`).
+## Requirements
+
+- PHP 8.1 atau 8.2 direkomendasikan.
 - Composer 2.x.
 - Node.js 18+ dan npm 9+.
 - MySQL 8.0 atau MariaDB yang kompatibel.
-- Ekstensi PHP yang dibutuhkan Laravel dan DomPDF, minimal: `BCMath`, `Ctype`, `Fileinfo`, `JSON`, `Mbstring`, `OpenSSL`, `PDO`, `Tokenizer`, `XML`, dan driver PDO MySQL.
+- PHP extensions yang dibutuhkan Laravel, termasuk PDO MySQL, OpenSSL, Mbstring, Tokenizer, XML, Ctype, Fileinfo, dan JSON.
 
-## Instalasi lokal
+Composer project requirement saat ini adalah PHP `^8.0.2`. Versi PHP yang digunakan harus tetap kompatibel dengan dependency yang terkunci.
 
-### 1. Ekstrak dan masuk ke folder project
+## Installation
+
+### 1. Clone repository
 
 ```bash
-unzip Sistem_Antrian_SANRAS-main.zip
-cd Sistem_Antrian_SANRAS-main
+git clone https://github.com/USERNAME_GITHUB/sanras-digital-queue.git
+cd sanras-digital-queue
 ```
 
-### 2. Install dependency PHP dan JavaScript
+### 2. Install PHP dependencies
 
 ```bash
 composer install
+```
+
+### 3. Install JavaScript dependencies
+
+```bash
 npm ci
 ```
 
-### 3. Siapkan environment
-
-Linux/macOS:
-
-```bash
-cp .env.example .env
-```
+### 4. Configure environment
 
 Windows PowerShell:
 
@@ -76,7 +110,21 @@ Windows PowerShell:
 Copy-Item .env.example .env
 ```
 
-Buat database MySQL bernama `sanras`, kemudian sesuaikan konfigurasi database pada `.env`:
+Linux/macOS:
+
+```bash
+cp .env.example .env
+```
+
+Generate application key:
+
+```bash
+php artisan key:generate
+```
+
+### 5. Configure database
+
+Buat database MySQL dengan nama `sanras`, kemudian sesuaikan `.env`:
 
 ```dotenv
 DB_CONNECTION=mysql
@@ -87,173 +135,127 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Generate application key:
+Gunakan username dan password database sesuai environment lokal Anda.
 
-```bash
-php artisan key:generate
-```
+### 6. Configure administrator account
 
-### 4. Siapkan akun administrator
-
-Seeder tidak lagi membuat akun admin dengan password tetap. Isi kredensial admin sendiri di `.env` menggunakan password kuat:
+Isi variabel berikut di `.env` dengan email dan password administrator yang kuat:
 
 ```dotenv
 SANRAS_ADMIN_NAME="Administrator SANRAS"
-SANRAS_ADMIN_EMAIL=admin@domain-anda.id
-SANRAS_ADMIN_PASSWORD="gunakan-password-kuat-dan-unik"
+SANRAS_ADMIN_EMAIL=admin@example.com
+SANRAS_ADMIN_PASSWORD="GANTI_DENGAN_PASSWORD_KUAT"
 ```
 
-Jangan commit file `.env` ke repository. Untuk fitur reset kata sandi melalui email, ganti `MAIL_MAILER=log` dengan konfigurasi SMTP yang benar. Setelah itu jalankan migration dan seeder:
+Jangan commit `.env` ke GitHub.
+
+### 7. Run database migrations and seeders
 
 ```bash
 php artisan migrate --seed
 ```
 
-Jika database sudah pernah di-seed dan Anda baru mengisi kredensial administrator, jalankan:
+Seeder membuat role `admin` dan `warga`. Akun admin dibuat dari variabel environment jika email dan password admin sudah diisi.
+
+Jika database sudah pernah di-seed sebelum kredensial admin diisi, jalankan:
 
 ```bash
 php artisan db:seed
 ```
 
-Seeder membuat role `admin` dan `warga`, lalu membuat atau memperbarui akun admin hanya jika `SANRAS_ADMIN_EMAIL` dan `SANRAS_ADMIN_PASSWORD` tersedia. Jika database lama sudah pernah di-seed dengan akun demo berpassword tetap, rotasi password atau nonaktifkan akun lama tersebut secara manual setelah backup; seeder baru tidak menghapus akun yang sudah tersimpan.
+### 8. Run frontend and application
 
-### 5. Build asset frontend
-
-Untuk development dengan Vite:
+Terminal pertama:
 
 ```bash
 npm run dev
 ```
 
-Jalankan aplikasi di terminal lain:
+Terminal kedua:
 
 ```bash
 php artisan serve
 ```
 
-Buka `http://127.0.0.1:8000`.
+Open:
 
-Untuk asset production:
+```text
+http://127.0.0.1:8000
+```
+
+### 9. Production build
 
 ```bash
 npm run build
 ```
 
-### 6. Menjalankan aplikasi
-
-Development:
+## Useful Commands
 
 ```bash
-php artisan serve
-```
-
-Production:
-
-- Arahkan document root Apache/Nginx ke folder `public/` (jangan arahkan document root ke root repository).
-- Jalankan PHP-FPM atau handler PHP yang kompatibel dengan versi PHP project. Aplikasi dilayani oleh web server melalui `public/index.php`; `php artisan serve` hanya untuk development atau smoke-test, bukan web server production.
-- Pastikan folder `storage/` dan `bootstrap/cache/` dapat ditulis oleh user web server.
-- Set `APP_ENV=production`, `APP_DEBUG=false`, dan `APP_URL` ke domain HTTPS yang benar.
-- Set `SESSION_SECURE_COOKIE=true`.
-- Jalankan optimasi cache:
-
-```bash
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-Untuk membersihkan cache ketika konfigurasi berubah:
-
-```bash
+# Clear Laravel caches
 php artisan optimize:clear
-```
 
-## Database dan migration
-
-Migration tambahan pada paket ini:
-
-- `add_queue_lookup_index`: menambah index pencarian antrean berdasarkan layanan, tanggal, pengguna, dan status.
-- `create_antrian_counters_table`: menyediakan counter unik per layanan dan tanggal agar nomor antrean dihasilkan dalam transaksi dan aman terhadap request bersamaan pada database yang mendukung row locking.
-
-Jalankan:
-
-```bash
-php artisan migrate
-```
-
-Jangan menghapus atau mengubah data antrean produksi untuk menyelesaikan masalah migration tanpa backup dan pemeriksaan terlebih dahulu.
-
-## Perintah pengembangan dan QA
-
-```bash
-# Pemeriksaan sintaks PHP manual
-find app routes database -name '*.php' -print0 | xargs -0 -n1 php -l
-
-# Menjalankan test suite
+# Run tests
 php artisan test
 
-# Pemeriksaan dependency PHP
+# Audit PHP dependencies
 composer audit
 
-# Pemeriksaan dependency JavaScript
+# Audit JavaScript dependencies
 npm audit
 
-# Production build frontend
+# Build frontend assets
 npm run build
 ```
 
-## Keamanan dan catatan operasional
-
-- Role pengguna baru ditetapkan server-side sebagai `warga`; request registrasi tidak dapat memilih role administrator.
-- Aksi edit dan hapus antrean masyarakat memverifikasi kepemilikan data di backend.
-- Data pribadi pemohon tidak ditampilkan pada tabel antrean publik.
-- Endpoint pengelolaan umpan balik berada di dalam middleware autentikasi dan role admin.
-- Pemanggilan antrean divalidasi ulang pada Livewire component dan dibatasi pada layanan serta tanggal yang sesuai.
-- Nomor antrean dibuat melalui counter unik per layanan/tanggal dan database transaction, termasuk ketika layanan antrean diubah.
-- Session cookie `HttpOnly` dan `SameSite=Lax`; cookie `Secure` otomatis aktif pada production kecuali dioverride oleh konfigurasi environment.
-- Middleware menambahkan header keamanan dasar. HSTS hanya dikirim ketika request dikenali sebagai HTTPS.
-- CORS tidak lagi mengizinkan semua origin secara default. Isi `CORS_ALLOWED_ORIGINS` hanya jika integrasi lintas origin memang diperlukan.
-
-### Batasan yang masih perlu ditindaklanjuti
-
-1. Laravel 9 dan Livewire 2 sudah tidak berada dalam masa dukungan keamanan upstream. Rencanakan upgrade terpisah dengan regression test.
-2. Dependency Composer/npm belum dapat diaudit atau diperbarui di lingkungan pembuatan arsip ini karena Composer dan `node_modules` tidak tersedia.
-3. Integrasi database, browser, dan PDF perlu diuji kembali pada environment staging yang terhubung ke database aktual.
-4. Persyaratan layanan di halaman publik adalah panduan umum, bukan pengganti informasi resmi dari unit pelayanan SAMSAT.
-5. Deployment production harus memakai HTTPS, kredensial unik, backup database, dan konfigurasi web server yang benar.
-
-## Troubleshooting
-
-| Gejala | Penyebab umum | Solusi |
-|---|---|---|
-| `No application encryption key has been specified` | `APP_KEY` belum dibuat | Jalankan `php artisan key:generate` setelah file `.env` tersedia. |
-| `Vite manifest not found` | Asset belum dibuild dan Vite dev server tidak berjalan | Jalankan `npm ci` lalu `npm run build`, atau jalankan `npm run dev` selama development. |
-| `SQLSTATE[HY000] [1045] Access denied` | Kredensial database salah | Periksa `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD`, lalu jalankan `php artisan config:clear`. |
-| `Base table or view not found` | Migration belum dijalankan | Jalankan `php artisan migrate --seed` setelah database dibuat. |
-| Akun admin tidak dapat digunakan | Kredensial admin belum diset di environment atau seeder belum dijalankan | Isi `SANRAS_ADMIN_EMAIL` dan `SANRAS_ADMIN_PASSWORD`, lalu jalankan `php artisan db:seed`. |
-| `Permission denied` pada cache/session/log | Hak akses folder runtime belum benar | Berikan hak tulis pada `storage/` dan `bootstrap/cache/` kepada user web server. |
-| Email reset kata sandi tidak diterima | Mailer masih menggunakan `log` atau SMTP belum benar | Konfigurasikan variabel `MAIL_*` pada `.env`, lalu bersihkan config cache. |
-
-## Struktur folder penting
+## Project Structure
 
 ```text
 app/
-  Http/Controllers/       # Controller HTTP dan autentikasi
-  Http/Livewire/          # Komponen Livewire antrean dan dashboard
-  Http/Middleware/        # Middleware role dan security headers
-  Models/                 # Model Eloquent
-config/                   # Konfigurasi Laravel dan SANRAS
+  Http/Controllers/       # HTTP controllers and authentication
+  Http/Livewire/          # Queue and admin Livewire components
+  Http/Middleware/        # Authentication, role, and security middleware
+  Models/                 # Eloquent models
+
+config/                   # Laravel and SANRAS configuration
 database/
-  migrations/             # Struktur database dan index
-  seeders/                # Role dan bootstrap admin dari environment
+  migrations/             # Database schema and indexes
+  seeders/                # Role and administrator bootstrap
+
+public/assets/            # Static images, icons, and local assets
+
 resources/
-  css/                    # Design system SANRAS
-  js/                     # Entry point Vite
+  css/                    # SANRAS design system
+  js/                     # Vite entry point
   views/                  # Blade templates
-public/assets/            # Logo, ikon, dan ilustrasi lokal
-routes/                   # Definisi route web dan API
+
+routes/                   # Web and API routes
+tests/                    # PHPUnit tests
 ```
 
-## Lisensi dan aset
+## Security Notes
 
-Aplikasi ini menggunakan dependency open-source yang lisensinya mengikuti masing-masing package. Aset gambar/template yang sudah berada di project dipertahankan; pastikan hak penggunaan aset sesuai ketentuan pemiliknya sebelum distribusi publik.
+- Never commit `.env`, credentials, API keys, tokens, or database dumps.
+- Configure a unique and strong administrator password.
+- Use HTTPS in production.
+- Set `APP_DEBUG=false` in production.
+- Configure database credentials through environment variables.
+- Back up the database before running migrations on an existing deployment.
+- Review user-generated data and uploaded assets before publishing screenshots or demo data.
+
+## Known Limitations
+
+- Laravel 9 and Livewire 2 are older major versions. Plan a separately tested upgrade to supported versions before long-term production use.
+- This project focuses on queue management and service information; it does not process vehicle-tax payments online.
+- Integration with official SAMSAT systems or government databases is not claimed.
+- Production deployment, external integrations, and database migration must be tested in the target environment.
+
+## Project Attribution
+
+Academic group project developed at **Politeknik Caltex Riau** for the course/project **TIK untuk Peningkatan Layanan Publik**.
+
+Individual contributions are described in the **My Contribution** section above. Add the names of other contributors only after confirming the preferred attribution with the team.
+
+## License
+
+No license is declared yet. Because this is a group project, confirm ownership, permission from contributors, and asset licenses before adding an open-source license.
